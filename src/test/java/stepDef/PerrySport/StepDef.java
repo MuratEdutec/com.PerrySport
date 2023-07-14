@@ -52,51 +52,7 @@ public class StepDef {
         Select select = new Select(pages.sorteerOp);
         select.selectByVisibleText("Prijs: Laag naar Hoog");
         ReusableMethods.bekle(3);
-
-/*        List<WebElement> sale = pages.salePrijs;
-        List<Double> saleP3 = new ArrayList<>();
-        for (WebElement each : sale
-        ) {
-            String saleP = each.getText();
-            saleP = saleP.replaceAll("[^0-9.]", "");
-
-            double sayi = Double.parseDouble(saleP);
-            saleP3.add(sayi);
-
-        }
-        SoftAssert softAssert = new SoftAssert();
-
-        int count = 0;
-
-        for (int i = 0; i < saleP3.size() - 1; i++) {
-            count++;
-        /*if (saleP3.get(i) < saleP3.get(i + 1)){
-            System.out.println("1 sayi kucuktur 2");
-            }else { System.out.println("2 sayi kucuktur 1") }
-            try {
-                Assert.assertTrue(saleP3.get(i) <= saleP3.get(i + 1));
-            } catch (AssertionError E) {
-
-                System.out.println(count + ". prijs " + saleP3.get(i) + " > " + (count + 1) + ". prijs " + saleP3.get(i + 1) + " --> so the order is not true!");
-
-            }
-        }
-*/
     }
-
-    @Then("scroll down to see products")
-    public void scrollDownToSeeProducts() {
-        ReusableMethods.scrolldown_DownViewAll();
-        ReusableMethods.bekle(5);
-
-    }
-
-
-    @Then("verify that the low-to-high sorting is true")
-    public void verifyThatTheLowToHighSortingIsTrue() {
-
-    }
-
 
     @Then("click Sorteer Op_Prijs: Hoog naar Laag")
     public void clickSorteerOp_PrijsHoogNaarLaag() {
@@ -109,29 +65,27 @@ public class StepDef {
     }
 
 
-    @Then("verify that the high-to-low sorting is true")
-    public void verifyThatTheHighToLowSortingIsTrue() {
+    @Then("scroll down to see products")
+    public void scrollDownToSeeProducts() {
+        ReusableMethods.scrolldown_DownViewAll();
+        ReusableMethods.bekle(5);
 
-/*
-        pages = new PriceOrder_Pages();
-        pages.sorteerOp.click();
-        Select select = new Select(pages.sorteerOp);
-        select.selectByVisibleText("Prijs: Laag naar Hoog");
-        ReusableMethods.bekle(3);
-*/
+    }
+
+
+    @Then("verify that the low-to-high sorting is true")
+    public void verifyThatTheLowToHighSortingIsTrue() {
+        System.out.println("---> Prices must be Low-to-High <---");
+
         List<WebElement> sale = pages.salePrijs;
         List<Double> saleP3 = new ArrayList<>();
-        for (WebElement each : sale
-        ) {
+
+        for (WebElement each : sale) {
             String saleP = each.getText();
             saleP = saleP.replaceAll("[^0-9.]", "");
 
             double sayi = Double.parseDouble(saleP);
-            //List<Double> saleP3 = new ArrayList<>();
             saleP3.add(sayi);
-            //System.out.println(saleP3);
-            //List<String> ada=saleP2;
-            //System.out.println(saleP2);
         }
         SoftAssert softAssert = new SoftAssert();
 
@@ -139,14 +93,42 @@ public class StepDef {
 
         for (int i = 0; i < saleP3.size() - 1; i++) {
             count++;
-        /*if (saleP3.get(i) < saleP3.get(i + 1)){
-            System.out.println("1 sayi kucuktur 2");
-            }else { System.out.println("2 sayi kucuktur 1") }*/
+            try {
+                Assert.assertTrue(saleP3.get(i) <= saleP3.get(i + 1));
+            } catch (AssertionError E) {
+
+                System.out.println(count + ".price " + saleP3.get(i) + " < " + (count + 1) + ".price " + saleP3.get(i + 1) + " --> so the order is not true!");
+
+            }
+        }
+
+        ReusableMethods.bekle(3);
+    }
+
+
+    @Then("verify that the high-to-low sorting is true")
+    public void verifyThatTheHighToLowSortingIsTrue() {
+        System.out.println("---> Prices must be High-to-Low <---");
+        List<WebElement> sale = pages.salePrijs;
+        List<Double> saleP3 = new ArrayList<>();
+        for (WebElement each : sale) {
+            String saleP = each.getText();
+            saleP = saleP.replaceAll("[^0-9.]", "");
+
+            double sayi = Double.parseDouble(saleP);
+            saleP3.add(sayi);
+        }
+        SoftAssert softAssert = new SoftAssert();
+
+        int count = 0;
+
+        for (int i = 0; i < saleP3.size() - 1; i++) {
+            count++;
             try {
                 Assert.assertTrue(saleP3.get(i) >= saleP3.get(i + 1));
             } catch (AssertionError E) {
 
-                System.out.println(count + ". prijs " + saleP3.get(i) + " < " + (count + 1) + ". prijs " + saleP3.get(i + 1) + " --> so the order is not true!");
+                System.out.println(count + ".price " + saleP3.get(i) + " > " + (count + 1) + ".price " + saleP3.get(i + 1) + " --> so the order is not true!");
 
             }
         }
