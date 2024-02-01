@@ -2,6 +2,7 @@ package stepDef.PerrySport;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -118,6 +119,9 @@ public class StepDef {
             double sayi = Double.parseDouble(saleP);
             saleP3.add(sayi);
         }
+      
+
+
         SoftAssert softAssert = new SoftAssert();
 
         int count = 0;

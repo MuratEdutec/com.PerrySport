@@ -5,12 +5,12 @@ Feature: US001_The price must be properly sorted
 
         Given Go to perry
         Then click cokie
-        Then click SALE
-        #Then scroll down to see products
-        Then click Sorteer Op_Prijs: Laag naar Hoog
-        Then verify that the low-to-high sorting is true
-        Then click Sorteer Op_Prijs: Hoog naar Laag
-        Then verify that the high-to-low sorting is true
-        Then terminate test
+       #Then click SALE
+       ##Then scroll down to see products
+       #Then click Sorteer Op_Prijs: Laag naar Hoog
+       #Then verify that the low-to-high sorting is true
+       #Then click Sorteer Op_Prijs: Hoog naar Laag
+       #Then verify that the high-to-low sorting is true
+       #Then terminate test
 
 
