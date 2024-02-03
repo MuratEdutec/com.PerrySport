@@ -30,20 +30,4 @@ public class PriceOrder_Pages {
     public List<WebElement> salePrijs;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
